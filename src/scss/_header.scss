@@ -1,0 +1,87 @@
+header {
+    background-color: $main-color;
+    padding: 20px;
+
+    nav {
+        display: flex;
+        @include display-flex(center, center, row);
+
+        .menu-icon {
+            cursor: pointer;
+            display: none;
+
+            .bar {
+                width: 25px;
+                height: 3px;
+                background-color: $title-color;
+                margin: 5px 0;
+            }
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+
+            li {
+                margin: 0 15px;
+
+                a {
+                    text-decoration: none;
+                    color: $title-color;
+
+                    &:hover {
+                        color: $subtitle-color;
+                    }
+                }
+            }
+
+            .contact {
+                padding: 4px 6px;
+                font-size: inherit;
+                box-shadow: 1px 1px 3px #0000004d;
+                border-radius: 2px;
+                background-color: $button-bg-color;
+                color: $title-color;
+
+                &:hover {
+                    background-color: $button-bg-color-hover;
+                    transition: 0.2s;
+                    font-size: 1.1em;
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+
+@include responsive(768px) {
+    header {
+        nav {
+            text-align: center;
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                z-index: 1; /* Adicione este z-index para garantir que o menu hamburguer fique acima do conteúdo */
+
+                &.open {
+                    display: flex;
+                }
+
+                li {
+                    margin: 10px 0;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
